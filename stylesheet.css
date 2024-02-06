@@ -1,0 +1,613 @@
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+
+:root {
+    --cor-fundo: #252422;
+    --cor-font: #ffffff;
+    --cor-boneco: #f1faee;
+    --cor-linha: #d62828;
+}
+
+* {
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--cor-fundo);
+    color: var(--cor-font);
+    width: 100%;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2em;
+}
+
+div.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 10px 10px 13px 30px;
+}
+
+.container-game {
+    display: flex;
+}
+
+div.description {
+	text-align: center;
+	padding: 1.8rem;
+    margin: 25px;
+    position: relative;
+}
+
+.line {
+	height: 5px;
+	background-color: var(--cor-linha);
+    margin-bottom: 20px;
+}
+
+.themes {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    position: absolute;
+    right: 10px;
+    z-index: 999;
+}
+
+.button-themes {
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.list-themes {
+    background-color: #dee2e6;
+    height: 100px;
+    padding: 10px 0px;
+    display: none;
+}
+
+.list-themes > li {
+    display: flex;
+    justify-content: space-around;
+    font-size: 14px;
+    padding-bottom: 5px;
+    color: #000000;
+}
+
+.box-color {
+    width: 14px;
+    height: 14px;
+}
+
+.dark {
+    background-color: #252422;
+    position: relative;
+    left: 2px;
+    cursor: pointer;
+}
+
+.light {
+    background-color: #f6f4f3;
+    border: 1px solid #000;
+    cursor: pointer;
+}
+
+.tokio {
+    background: radial-gradient(circle farthest-corner at center center, #04e762 15%, #cbf7ed 35%, #2f1847 50%);
+    cursor: pointer;
+}
+
+.ice {
+    background: linear-gradient(90deg,#7392b7 20%, #0582ca 35%, #b3c5d7 45%);
+    position: relative;
+    left: 4px;
+    cursor: pointer;
+}
+
+@keyframes myAnim {
+	0% {
+		opacity: 0;
+		transform: rotateX(70deg);
+		transform-origin: top;
+	}
+
+	100% {
+		opacity: 1;
+		transform: rotateX(0deg);
+		transform-origin: top;
+	}
+}
+
+.active {
+    animation: myAnim 2s ease 0s 1 normal forwards;
+}
+
+@keyframes myAnim2 {
+	0% {
+		opacity: 1;
+		transform: rotateX(0deg);
+		transform-origin: top;
+	}
+
+	100% {
+		opacity: 0;
+		transform: rotateX(-100deg);
+		transform-origin: top;
+	}
+}
+
+.no-active {
+    animation: myAnim2 2s ease 0s 1 normal forwards;
+}
+
+h1.title {
+	font: 60px "Press Start 2P", cursive;
+	color: var(--cor-font);
+}
+
+button.buttonNewGame {
+	font: 20px "Press Start 2P", cursive;
+	height: 50px;
+	width: 280px;
+	border-radius: 10px;
+	text-align: center;
+	color: var(--cor-fundo);
+	background-color:var(--cor-font);
+    display: block;
+    margin: auto;
+}
+
+#keyPressed {
+    font-size: 2rem;
+	font: italic;	
+	color:var(--cor-font);
+    text-align: center;
+}
+
+#category {
+	font: italic;	
+	color:var(--cor-font);
+    text-align: center;
+    font-size: 3.6rem;
+}
+
+div.dashes {
+	font-size: 3.5rem;
+	font: italic;	
+	color:var(--cor-font);
+    text-align: center;
+}
+
+div.wrongLetters {
+    font-size: 2rem;
+	font: italic;	
+	color:var(--cor-font);
+    text-align: center;
+}
+
+
+div.painelShow {
+    width: 50%;
+	font-size: 2rem;
+}
+
+div.game {
+    width: 50%;
+    position: relative;
+}
+
+body,
+#trunks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div#hangman {
+    width: 100%;
+}
+
+div.box-man {
+    width: 250px;
+    height: 300px;
+    margin: auto;
+    position: relative;
+}
+
+#trunks {
+    position: relative;
+    left: -95px;
+}
+
+.trunk-1,
+.trunk-2,
+.trunk-3{
+    background: #BF854B;
+    width: 20px;
+}
+
+.trunk-1 {
+    height: 250px;
+}
+
+.trunk-2 {
+	height: 150px;
+    transform: rotate(90deg) translate(-130px, -45px);
+}
+
+.trunk-3 {
+    height: 100px;
+    transform: rotate(90deg) translate(115px, 20px);
+}
+
+#person,
+.top-rope,
+.middle-rope,
+.bottom-rope,
+.bottom-rope::before {
+    position: absolute;
+}
+
+.top-rope {
+	width: 10px; 
+	height: 30px; 
+    top: -20px;
+    left: 200px; 
+    border-radius: 10px;
+    box-shadow: 
+        10px 0 0 0 #F7B239,
+        10px 0 0 1px #cc9028,
+        20px 0 0 0 #F7B239,
+        20px 0 0 1px #cc9028,
+        30px 0 0 0 #F7B239,
+        30px 0 0 1px #cc9028;
+}
+
+.middle-rope {
+    background: #F7B239;
+    width: 10px;
+    height: 40px; 
+    top: 8px;
+    left: 220px; 
+    border: 1px solid #cc9028;
+	border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.bottom-rope {
+    background: transparent;
+    width: 33px;
+    height: 40px;
+    top: 50px; 
+    left: 208px; 
+    border: 2px solid #cc9028;
+    box-shadow: inset 0 0 0 7px #F7B239;
+    border-radius: 50%;
+}
+
+.bottom-rope::before {
+    content: "";
+    width: 5px;
+    height: 20px;
+    top: -20px;
+    left: 13px;
+    border-radius: 10px;
+    box-shadow: 
+        5px 0 0 0 #F7B239,
+        5px 0 0 1px #cc9028,
+        10px 0 0 0 #F7B239,
+        10px 0 0 1px #cc9028;
+    transform: rotate(90deg);
+}
+
+.head,
+.person-body,
+.right-arm,
+.left-arm,
+.right-leg,
+.left-leg {
+    background: var(--cor-boneco);
+    position: absolute; 
+}
+
+.head {
+    width: 50px;
+    height: 50px;
+    top: -190px;
+    left: 105px;
+    border-radius: 50%;
+}
+
+
+.eyes {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: .8em;
+	color: red;	
+    position: absolute;
+    top: -190px;
+    left: 113px; 
+}
+
+.eye-2 {
+    left: 136px; 
+}
+
+.person-body,
+.right-arm,
+.left-arm,
+.right-leg,
+.left-leg {
+    width: 10px;
+    border-radius: 10px;
+	top: -142px; 
+}
+
+.person-body {
+	height: 70px; 
+    left: 125px;  
+}
+
+.right-arm,
+.left-arm,
+.right-leg,
+.left-leg {
+	height: 40px; 
+    left: 125px; 
+}
+
+.right-leg,
+.left-leg {
+    top: -80px; 
+}
+
+.right-arm, .right-leg {
+    transform: rotate(45deg) translate(-10px, 10px);
+}
+
+.left-arm,
+.left-leg {
+    transform: rotate(-45deg) translate(10px, 10px);
+}
+
+#display {
+    font-size: 2rem;
+}
+
+.hide {
+    opacity: 0.0; 
+}
+
+@media screen and (max-width: 780px) {
+    h1.title {
+        font-size: 40px;
+    }
+
+    .line {
+        height: 4px;
+        margin-bottom: 20px;
+    }
+
+    #keyPressed {
+        font-size: 1.5rem;
+    }
+    
+    #category {
+        font-size: 2.8rem;
+    }
+    
+    div.dashes {
+        font-size: 3rem;
+    }
+    
+    div.wrongLetters {
+        font-size: 1.5rem;
+    }
+
+    button.buttonNewGame {
+        font-size: 16px;
+        height: 35px;
+        width: 220px;
+        border-radius: 6px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    h1.title {
+        font-size: 23px;
+    }
+
+    .line {
+        height: 3px;
+        margin-bottom: 20px;
+    }
+
+    div.painelShow {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    div.box-man {
+        width: 150px;
+    }
+
+    .top-rope {
+        width: 6px;
+        height: 24px;
+        top: 30px;
+        left: 130px;
+        border-radius: 10px;
+        box-shadow: 
+            14px 0 0 0 #F7B239, 
+            14px 0 0 1px #cc9028, 
+            22px 0 0 0 #F7B239, 
+            22px 0 0 1px #cc9028, 
+            30px 0 0 0 #F7B239, 
+            30px 0 0 1px #cc9028;
+    }
+
+    .bottom-rope::before {
+        width: 5px;
+        height: 15px;
+        top: -18px;
+        left: 8px;
+        border-radius: 10px;
+    }
+    
+    .middle-rope {
+        background: #F7B239;
+        width: 8px;
+        height: 30px; 
+        top: 55px;
+        left: 151px; 
+        border: 1px solid #cc9028;
+        border-radius: 10px;
+        box-sizing: border-box;
+    }
+    
+    .bottom-rope {
+        background: transparent;
+        width: 20px;
+        height: 30px;
+        top: 91px; 
+        left: 144px; 
+        border: 1.3px solid #cc9028;
+        box-shadow: inset 0 0 0 5px #F7B239;
+        border-radius: 50%;
+    }
+
+    .trunk-1,
+    .trunk-2,
+    .trunk-3{
+        width: 15px;
+    }
+
+    .trunk-1 {
+        height: 170px;
+        transform: translate(28px, 45px);
+    }
+    
+    .trunk-2 {
+        height: 80px;
+        transform: rotate(90deg) translate(-45px, -46px);
+    }
+    
+    .trunk-3 {
+        height: 50px;
+        transform: rotate(90deg) translate(135px, -16px);
+    }
+
+    .head,
+    .person-body,
+    .right-arm,
+    .left-arm,
+    .right-leg,
+    .left-leg {
+        background: var(--cor-boneco);
+        position: absolute; 
+    }
+
+    .head {
+        width: 30px;
+        height: 30px;
+        top: -70px;
+        left: 45px;
+        border-radius: 50%;
+    }
+
+    .eyes {
+        font-size: 0.5em;
+        color: red;
+        opacity: 0.3; 	
+        position: absolute;
+        top: -68px;
+        left: 48px; 
+    }
+
+    .eye-2 {
+        left: 63px; 
+    }
+
+    .person-body,
+    .right-arm,
+    .left-arm,
+    .right-leg,
+    .left-leg {
+        width: 8px;
+        border-radius: 5px;
+        top: -47px; 
+    }
+
+    .person-body {
+        height: 48px; 
+        left: 55px;  
+    }
+
+    .right-arm,
+    .left-arm,
+    .right-leg,
+    .left-leg {
+        height: 32px; 
+        left: 55px; 
+    }
+
+    .right-leg,
+    .left-leg {
+        top: -17px; 
+    }
+
+    .right-arm, .right-leg {
+        transform: rotate(44deg) translate(-4px, 10px);
+    }
+
+    .left-arm,
+    .left-leg {
+        transform: rotate(-44deg) translate(4px, 10px);
+    }
+
+    #keyPressed {
+        font-size: 0.8rem;
+    }
+    
+    #category {
+        font-size: 1.7rem;
+    }
+    
+    div.dashes {
+        font-size: 1rem;
+    }
+    
+    div.wrongLetters {
+        font-size: 1rem;
+    }
+
+    button.buttonNewGame {
+        font-size: 14px;
+        height: 28px;
+        width: 210px;
+        border-radius: 5px;
+    }
+
+    .button-themes {
+        width: 50px;
+        font-size: 10px;
+    }
+
+    .list-themes {
+        background-color: #dee2e6;
+        width: 50px;
+        height: 75px;
+        padding: 5px 0px;
+    }
+    
+    .list-themes > li {
+        font-size: 10px;
+        padding-bottom: 7px;
+    }
+    
+    .box-color {
+        width: 8px;
+        height: 8px;
+    }
+}
+
